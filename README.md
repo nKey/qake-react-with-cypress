@@ -1,8 +1,8 @@
-### RUN APP ![cypress version](https://img.shields.io/badge/cypress-10.3.0-brightgreen)
+### RUN APP
 
 npm run start
 
-### FOR RUN TESTS NEED RUN APP
+### TO RUN TESTS YOU NEED RUN APP IT FIRST
 
 npm run test
 
