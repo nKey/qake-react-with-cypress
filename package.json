@@ -16,7 +16,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "cypress open",
-    "coveraged": "open coverage/Icov-report/index.html",
+    "code:coverage": "open coverage/Icov-report/index.html",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
