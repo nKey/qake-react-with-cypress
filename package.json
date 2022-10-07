@@ -1,7 +1,7 @@
 {
-  "name": "stub-react-import",
+  "name": "qake-react-with-cypress",
   "version": "0.1.0",
-  "description": "Stub an import from a Cypress v10 component test",
+  "description": "Component, e2e and unit tests using Cypress 10 and React 18",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
@@ -16,7 +16,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "cypress open",
-    "code:coverage": "open coverage/Icov-report/index.html",
+    "code:coverage": "start chrome --new-window --incognito path\\qake-react-with-cypress\\coverage\\lcov-report\\index.html",
+    "code:coverage:mac": "open coverage/Icov-report/index.html",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

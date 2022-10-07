@@ -6,6 +6,10 @@ npm install && npm run start
 
 npm run test
 
-### AFTER RUN COMPONENT TESTS, YOU CAN SEE COVERAGE:
-
+### WINDOWS: AFTER RUN COMPONENT TESTS, YOU CAN SEE COVERAGE:
+(you need to configure the index.html path in your package.json file)
 npm run code:coverage
+
+### MAC OS: AFTER RUN COMPONENT TESTS, YOU CAN SEE COVERAGE:
+
+npm run code:coverage:mac

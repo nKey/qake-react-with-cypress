@@ -19,13 +19,9 @@ it('component testing - shows the location host and path', () => {
 
 it('unit testing - shows the location host and path', () => {
   const location = getLocation()
-  // {
-  //   "hostname": "localhost",
-  //   "pathname": "/__cypress/iframes//Users/douglasqueiroz/Dev/stub-react-import/src/App.cy.js"
-  // }
   expect(location.hostname).to.be.equals('localhost')
-  expect(location.pathname).to.be.equals(
-    '/__cypress/iframes//Users/douglasqueiroz/Dev/stub-react-import/src/App.cy.js',
+  expect(location.pathname).to.contains(
+    '/qake-react-with-cypress/src/App.cy.js',
   )
   console.log({ location })
 })
