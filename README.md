@@ -8,4 +8,4 @@ npm run test
 
 ### AFTER RUN COMPONENT TESTS, YOU CAN SEE COVERAGE:
 
-npm run coveraged
+npm run cod:coverage
