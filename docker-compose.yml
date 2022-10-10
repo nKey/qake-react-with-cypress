@@ -1,0 +1,44 @@
+version: "3"
+services:
+    postgres:
+        image: "postgres"
+        container_name: db
+        environment:
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=rngtjeb2
+            - POSTGRES_DB=postgres
+        ports:
+            - "5432:5432"
+        volumes:
+            - /postgres-data:/var/lib/postgresql/data
+        networks:
+            - professionalnetwork-network
+    
+    pgadmin-compose:
+        image: dpage/pgadmin4
+        environment:
+            PGADMIN_DEFAULT_EMAIL: "postgres"
+            PGADMIN_DEFAULT_PASSWORD: "rngtjeb2"
+        ports:
+            - "54321:80"
+        depends_on:
+            - postgres
+        networks:
+            - professionalnetwork-network
+
+    app:
+        container_name: app
+        build:
+            context: .
+        command: npm run start:dev
+        networks:
+            - professionalnetwork-network
+        ports:
+            - "3001:3001"
+        volumes:
+            - ./:/home/node/app
+            - /home/node/app/node_modules
+
+networks:
+    professionalnetwork-network:
+        driver: bridge

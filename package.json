@@ -16,7 +16,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "cypress open",
-    "test:headless": "cypress run --component",
+    "test:headless": "cypress run --component --config video=false",
     "code:coverage": "start chrome --new-window --incognito path\\qake-react-with-cypress\\coverage\\lcov-report\\index.html",
     "code:coverage:mac": "open coverage/Icov-report/index.html",
     "eject": "react-scripts eject"

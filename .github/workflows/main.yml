@@ -1,0 +1,32 @@
+name: Node
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  ci-cd:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version: [16^]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: "npm"
+
+      - name: Build-DB
+        run: docker-compose build
+
+      - name: Stop docker
+        run: docker-compose stop
+
+      - name: Run docker and tests
+        run: docker-compose up -d && docker ps && docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' && npm run test:headless 
+      #- name: Run Tests
+      #working-directory: ./tests
+      #run: npm install && npm run test
