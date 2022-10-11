@@ -26,14 +26,15 @@ jobs:
         run: docker-compose stop
 
       - name: Run docker and tests
-        run: docker-compose up -d && docker ps && docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' app && npm run test:headless
+        run: docker-compose up -d && docker ps && docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' app
+        #  && npm run test:headless
 
       - name: Headless Chrome
         uses: cypress-io/github-action@v4
         timeout-minutes: 10
         with:
           start: npm run test:headless
-          browser: chrome
+          # browser: chrome
           headless: true
 
       - name: SonarCloud Scan
