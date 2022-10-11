@@ -21,7 +21,7 @@ jobs:
         run: docker-compose stop
 
       - name: Run docker and tests
-        run: docker-compose up -d && docker ps && docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' app && pwd && echo 'Douglas' && docker exec app ls -a /home/node/app/node_modules && docker exec app ls -a /home/node/app/node_modules/.bin && /home/node/app/node_modules/.bin/cypress run --component --config video=false
+        run: docker-compose up -d && docker ps && docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' app && pwd && echo 'Douglas' && docker exec app ls -a /home/node/app/node_modules && docker exec app ls -a /home/node/app/node_modules/.bin && docker exec /home/node/app/node_modules/.bin/cypress run --component --config video=false
 
       # - name: Cypress run
       #   uses: cypress-io/github-action@v2
