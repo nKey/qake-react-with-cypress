@@ -21,7 +21,7 @@ jobs:
         run: docker run -d --name runapp -p 3000:3000 buildapp && docker ps && docker logs runapp
 
       - name: Run Cypress
-        run: docker exec app npx cypress run --component --config video=false
+        run: docker exec runapp npx cypress run --component --config video=false
       # - name: Stop docker
       #   run: docker-compose stop
 
