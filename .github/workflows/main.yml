@@ -19,16 +19,16 @@ jobs:
           node-version: 16
           cache: 'npm'
 
-      - name: Build-DB
-        run: docker-compose build
+      # - name: Build-DB
+      #   run: docker-compose build
 
-      - name: Stop docker
-        run: docker-compose stop
+      # - name: Stop docker
+      #   run: docker-compose stop
 
       - name: Run docker and tests
         run: docker-compose up -d && docker ps && docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' app
       - name: Cypress run
-        run: docker exec app && pwd && ls
+        run: docker exec app pwd && ls
         #$$ docker exec app $$ ls && pwd && npx cypress run --component --config video=false
         #  && npm run test:headless
         #$(npm bin)/cypress
