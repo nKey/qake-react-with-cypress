@@ -14,14 +14,14 @@ jobs:
         with:
           fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
 
-      - name: Build-DB
-        run: docker build -t cypress-test . && docker ps
+      - name: BUILD APP
+        run: docker build -t app . && docker ps
 
-      - name: Build-DB
-        run: docker run -d cypress-test && docker ps && docker logs cypress-test
+      - name: RUN APP
+        run: docker run -d --name app && docker ps && docker logs app
 
       - name: Run Cypress
-        run: docker exec cypress-test && npx cypress run --component --config video=false
+        run: docker exec app && npx cypress run --component --config video=false
       # - name: Stop docker
       #   run: docker-compose stop
 
