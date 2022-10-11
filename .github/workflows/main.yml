@@ -26,10 +26,14 @@ jobs:
       - name: Stop docker
         run: docker-compose stop
 
-      # - name: Run docker and tests
-      #   run: docker-compose up -d && docker ps && docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' app
-      # - name: Cypress run
-      #   uses: cypress-io/github-action@v2
-      #   with:
-      #     install: false
-      #     start: npm run test:headless
+      - name: Run docker and tests
+        run: docker-compose up -d && docker ps && docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' app
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          install: true
+          start: cypress run --component --config video=false
+
+      - name: Stop docker
+        run: docker-compose stop
