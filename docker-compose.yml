@@ -4,7 +4,7 @@ services:
     container_name: app
     build:
       context: .
-    command: npm run start & npm run test:headless
+    command: npm run start
     networks:
       - app-network
     ports:
@@ -12,6 +12,15 @@ services:
     volumes:
       - ./:/home/node/app
       - /home/node/app/node_modules
+
+  cypress:
+    build:
+      context: .
+      dockerfile: docker/cypress
+    depends_on:
+      - node
+    volumes:
+      - .:/code
 
 networks:
   app-network:
