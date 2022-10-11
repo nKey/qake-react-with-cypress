@@ -15,10 +15,10 @@ jobs:
           fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
 
       - name: BUILD APP
-        run: docker build -t app . && docker ps
+        run: docker build -t buildapp --no-cache .
 
       - name: RUN APP
-        run: docker run -d --name app && docker ps && docker logs app
+        run: docker run -d --name runapp -p 3000:3000 buildapp && docker ps && docker logs runapp
 
       - name: Run Cypress
         run: docker exec app && npx cypress run --component --config video=false
