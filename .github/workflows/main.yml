@@ -32,7 +32,7 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
-          install: true
+          install: false
           start: cypress run --component --config video=false
 
       - name: Stop docker
