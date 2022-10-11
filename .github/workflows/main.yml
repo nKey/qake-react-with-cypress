@@ -27,3 +27,13 @@ jobs:
 
       - name: Run docker and tests
         run: docker-compose up -d && docker ps && docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' app && npm run test:headless
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          install: false
+          start: npm run test:headless
+          wait-on: 'http://localhost:3000'
+          wait-on-timeout: 200
+          browser: chrome
+          headless: true
+          record: false
