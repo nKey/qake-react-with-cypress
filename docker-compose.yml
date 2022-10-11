@@ -18,7 +18,7 @@ services:
       context: .
       dockerfile: docker/cypress
     depends_on:
-      - node
+      - app
     volumes:
       - .:/code
 
