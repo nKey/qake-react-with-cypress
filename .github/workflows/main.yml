@@ -1,41 +1,40 @@
-name: Build
+name: Sonar Tests
+
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   pull_request:
-    types: [opened, synchronize, reopened]
+    branches: [main]
+
 jobs:
-  sonarcloud:
-    name: SonarCloud
+  ci-cd:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version: [16^]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
+          node-version: 16
+          cache: 'npm'
 
-      - name: BUILD APP
-        run: docker build -t buildapp --no-cache .
+      - name: Build-DB
+        run: docker-compose build
 
-      - name: RUN APP
-        run: docker run -d --name runapp -p 3000:3000 buildapp && docker ps && docker logs runapp
+      - name: Stop docker
+        run: docker-compose stop
 
-      - name: Run Cypress
-        run: docker exec runapp npx cypress run --component --config video=false
-      # - name: Stop docker
-      #   run: docker-compose stop
+      - name: Run docker and tests
+        run: docker-compose up -d && docker ps && docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' && npm run test:headless
 
-      # - name: Run docker and tests
-      #   run: docker-compose up -d && docker ps && docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' app && pwd && echo 'Douglas' && docker exec app ls -a /home/node/app/node_modules && docker exec app ls -a /home/node/app/node_modules/.bin && docker exec app /home/node/app/node_modules/.bin/cypress run --component --config video=false
-
-      # - name: Cypress run
-      #   uses: cypress-io/github-action@v2
-      #   with:
-      #     install-command: npm i
-      #     start: npm run test:headless
-
-      # - name: Stop docker
-      #   run: docker
+      - name: Headless Chrome
+        uses: cypress-io/github-action@v4
+        timeout-minutes: 10
+        with:
+          start: npm run test:headless
+          browser: chrome
+          headless: true
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
