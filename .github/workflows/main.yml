@@ -9,7 +9,6 @@ on:
 jobs:
   ci-cd:
     runs-on: ubuntu-latest
-    container: cypress/included:4.11.0
     strategy:
       matrix:
         version: [16^]
