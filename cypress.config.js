@@ -47,7 +47,7 @@ module.exports = defineConfig({
     },
   },
   e2e: {
-    integrationFolder: 'cypress/e2e',
+    // integrationFolder: 'cypress/e2e',
     baseUrl: 'http://localhost:3000',
     supportFile: false,
     setupNodeEvents(on, config) {
