@@ -32,8 +32,8 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
-          install: false
-          start: cypress run --component --config video=false
+          install-command: npm i
+          start: npm run test:headless
 
       - name: Stop docker
         run: docker-compose stop
