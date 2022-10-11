@@ -35,5 +35,5 @@ jobs:
           wait-on: 'http://localhost:3000'
           wait-on-timeout: 200
           browser: chrome
-          headless: true
+          headless: false
           record: false
