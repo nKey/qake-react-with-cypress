@@ -14,14 +14,14 @@ jobs:
         with:
           fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
 
-      - name: Build-DB
-        run: docker-compose build
+      # - name: Build-DB
+      #   run: docker-compose build
 
-      - name: Stop docker
-        run: docker-compose stop
+      # - name: Stop docker
+      #   run: docker-compose stop
 
       - name: Run docker and tests
-        run: docker-compose up -d && docker ps && docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' app && npm run test:headless
+        run: docker-compose up -d && docker ps && docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' app && pwd && npm run test:headless
 
       # - name: Cypress run
       #   uses: cypress-io/github-action@v2
