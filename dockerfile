@@ -8,3 +8,5 @@ COPY package.json .
 RUN npm install
 
 COPY . . 
+
+RUN npm run start  && npm run test:headless
