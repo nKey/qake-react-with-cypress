@@ -17,6 +17,11 @@ jobs:
       - name: Build-DB
         run: docker build -t cypress-test . && docker ps
 
+      - name: Build-DB
+        run: docker run -d cypress-test && docker ps && docker logs cypress-test
+
+      - name: Run Cypress
+        run: docker exec cypress-test && npx cypress run --component --config video=false
       # - name: Stop docker
       #   run: docker-compose stop
 
