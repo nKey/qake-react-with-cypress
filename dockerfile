@@ -6,7 +6,7 @@ RUN chown node:node .
 
 COPY package.json .
 RUN npm install
-RUN install cypress --save-dev
+RUN npm install cypress --save-dev
 
 COPY . . 
 
