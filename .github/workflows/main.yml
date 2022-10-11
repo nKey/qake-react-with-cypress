@@ -1,39 +1,20 @@
-name: Node
-
+name: Build
 on:
   push:
-    branches: [main]
+    branches:
+      - main
   pull_request:
-    branches: [main]
-
+    types: [opened, synchronize, reopened]
 jobs:
-  ci-cd:
+  sonarcloud:
+    name: SonarCloud
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        version: [16^]
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v2
         with:
-          node-version: 16
-          # cache: 'npm'
-
-      - name: Build-DB
-        run: docker-compose build
-
-      - name: Stop docker
-        run: docker-compose stop
-
-      - name: Run docker and tests
-        run: docker-compose up -d && docker ps && docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' app
-      - name: Cypress run
-        uses: cypress-io/github-action@v2
-        with:
-          install: false
-          start: npm run test:headless
-          # wait-on: 'http://localhost:3000'
-          # wait-on-timeout: 200
-          # browser: chrome
-          # headless: false
-          # record: false
+          fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
