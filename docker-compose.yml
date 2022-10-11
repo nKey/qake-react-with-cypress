@@ -13,14 +13,14 @@ services:
       - ./:/home/node/app
       - /home/node/app/node_modules
 
-  cypress:
-    build:
-      context: .
-      dockerfile: docker/cypress
-    depends_on:
-      - app
-    volumes:
-      - .:/code
+  # cypress:
+  #   build:
+  #     context: .
+  #     dockerfile: docker/cypress
+  #   depends_on:
+  #     - app
+  #   volumes:
+  #     - .:/code
 
 networks:
   app-network:

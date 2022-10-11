@@ -9,6 +9,7 @@ on:
 jobs:
   ci-cd:
     runs-on: ubuntu-latest
+    container: cypress/included:4.11.0
     strategy:
       matrix:
         version: [16^]
@@ -29,8 +30,30 @@ jobs:
         run: docker-compose up -d && docker ps && docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' app && docker logs app
 
       - name: Cypress run
-        run: echo 'Vai rodar o cypress!!' && docker ps && docker-compose exec cypress node_modules/.bin/cypress
-        #run: docker exec app pwd && ls && npm run test:headless
+        run: echo 'Vai rodar o cypress!!' && cypress run test:headless
+
+      #   cypress-run:
+      # runs-on: ubuntu-latest
+      # # Docker image with Cypress pre-installed
+      # # https://github.com/cypress-io/cypress-docker-images/tree/master/included
+      # container: cypress/included:4.11.0
+      # steps:
+      #   - name: Checkout 🛎
+      #     uses: actions/checkout@v1
+
+      #   # normally we would NOT need to install NPM dependencies
+      #   # but in this repo we are using additional plugins listed in package.json
+      #   # thus we need to install them
+      #   - name: Install dependencies 📦
+      #     # we could simply run "npm ci" but that would not cache dependencies
+      #     # thus we can use this 3rd party action
+      #     uses: bahmutov/npm-install@v1
+
+      #   - name: Run tests 🧪
+      #     run: cypress run --record
+      #     env:
+      #       # pass the Dashboard record key as an environment variable
+      #       CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
       #   run: docker exec app pwd && ls && npx cypress run --component --config video=false
       #$$ docker exec app $$ ls && pwd && npx cypress run --component --config video=false
       #  && npm run test:headless
