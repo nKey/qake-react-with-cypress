@@ -20,8 +20,10 @@ it('component testing - shows the location host and path', () => {
 it('unit testing - shows the location host and path', () => {
   const location = getLocation()
   expect(location.hostname).to.be.equals('localhost')
-  expect(location.pathname).to.contains(
-    '/qake-react-with-cypress/src/App.cy.js',
-  )
+  console.log({ location })
+  // expect(location.pathname).to.contains(
+  //   '/qake-react-with-cypress/src/App.cy.js',
+  // )
+  expect(location.pathname).to.contains('src/App.cy.js')
   console.log({ location })
 })
