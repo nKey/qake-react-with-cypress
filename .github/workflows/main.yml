@@ -1,4 +1,4 @@
-name: Node
+name: Sonar Tests
 
 on:
   push:
@@ -17,13 +17,22 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-          cache: "npm"
+          cache: 'npm'
 
-      - name: Build-DB
+      - name: Build docker
         run: docker-compose build
 
       - name: Stop docker
         run: docker-compose stop
 
-      - name: Run docker and tests
-        run: docker-compose up -d && docker ps && docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' && npm run test:headless
+      - name: Run docker
+        run: docker-compose up -d && docker ps && docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' app && docker logs app
+
+      - name: Cypress run
+        run: echo 'Vai rodar o cypress!!' && docker ps && docker exec app ls && docker exec app npm run test:headless
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

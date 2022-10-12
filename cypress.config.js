@@ -2,6 +2,10 @@ const { defineConfig } = require('cypress')
 
 module.exports = defineConfig({
   component: {
+    codeCoverage: {
+      exclude: ['cypress/**/*.*'],
+    },
+    specPattern: 'src/*.cy.js',
     setupNodeEvents(on, config) {
       console.log('setupNodeEvents for components')
 
@@ -46,6 +50,7 @@ module.exports = defineConfig({
     },
   },
   e2e: {
+    integrationFolder: 'cypress/e2e',
     baseUrl: 'http://localhost:3000',
     supportFile: false,
     setupNodeEvents(on, config) {
