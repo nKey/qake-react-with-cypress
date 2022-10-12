@@ -52,10 +52,9 @@
     "include": "src/components/*.js",
     "exclude": [
       "src/components/App.cy.js",
-      "src/components/App.css",
-      "src/setupTests.js",
       "src/components/index.js",
-      "src/components/index.css.js"
+      "src/components/index.css",
+      "src/setupTests.js"
     ]
   }
 }
