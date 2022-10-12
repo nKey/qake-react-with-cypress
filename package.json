@@ -49,13 +49,13 @@
   "nyc": {
     "all": true,
     "excludeAfterRemap": true,
-    "include": "src/**/*.js",
+    "include": "src/components/*.js",
     "exclude": [
-      "cypress/**/*.js",
-      "src/**/*.cy.js",
-      "src/**/*.test.js",
+      "src/components/App.cy.js",
+      "src/components/App.css",
       "src/setupTests.js",
-      "src/index.js"
+      "src/components/index.js",
+      "src/components/index.css.js"
     ]
   }
 }
