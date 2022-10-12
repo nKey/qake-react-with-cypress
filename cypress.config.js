@@ -2,9 +2,9 @@ const { defineConfig } = require('cypress')
 
 module.exports = defineConfig({
   component: {
-    // codeCoverage: {
-    //   exclude: ['cypress/**/*.*'],
-    // },
+    codeCoverage: {
+      exclude: ['cypress/**/*.*'],
+    },
     specPattern: 'src/*.cy.js',
     setupNodeEvents(on, config) {
       console.log('setupNodeEvents for components')
