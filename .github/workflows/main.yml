@@ -29,7 +29,7 @@ jobs:
         run: docker-compose up -d && docker ps && docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' app && docker logs app
 
       - name: Cypress run
-        run: echo 'Vai rodar o cypress!!' && docker ps && docker exec app ls && docker exec app yum install -y xorg-x11-server-Xvfb gtk2-devel gtk3-devel libnotify-devel GConf2 nss libXScrnSaver alsa-lib && docker exec app npm run test:headless
+        run: echo 'Vai rodar o cypress!!' && docker ps && docker exec app ls && docker exec -it app bash apt-get -y update && apt-get install libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb && docker exec app npm run test:headless
         #run: echo 'Vai rodar o cypress!!' && docker exec app docker ps && docker exec app npm run test:headless
 
       #   cypress-run:
