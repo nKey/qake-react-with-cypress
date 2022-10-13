@@ -21,7 +21,7 @@ module.exports = function (results) {
         logMessage.type = 'CODE_SMELL'
         logMessage.severity = 'INFO'
       }
-      if (msg.severity === 2) {
+      if (msg.severity >= 2) {
         logMessage.type = 'BUG'
         logMessage.severity = 'MAJOR'
       }
