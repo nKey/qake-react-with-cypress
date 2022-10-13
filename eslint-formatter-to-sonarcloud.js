@@ -4,7 +4,7 @@ module.exports = function (results) {
     result.messages.forEach(function (msg) {
       let logMessage = {
         engineId: 'eslint',
-        ruleId: msg.ruleId,
+        ruleId: msg.ruleId || 'indent',
         primaryLocation: {
           message: msg.message,
           filePath: result.filePath,
