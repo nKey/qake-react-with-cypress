@@ -11,7 +11,6 @@ module.exports = defineConfig({
 
       // https://github.com/bahmutov/cypress-code-coverage
       require('@bahmutov/cypress-code-coverage/plugin')(on, config)
-
       return config
     },
     devServer: {
