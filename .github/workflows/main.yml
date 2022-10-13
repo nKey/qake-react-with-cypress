@@ -40,10 +40,10 @@ jobs:
           echo ${{ github.workspace }}/
           ls ${{ github.workspace }}/report
           sudo -S chown -R $USER:$USER ${{ github.workspace }}/report
-          sed -e "s;/home/node/app;/github/workspace/;g" ./report/eslint-report-formated.json > ./report/eslint-report-formated.temp
-          mv ${{ github.workspace }}/eslint-report-formated.temp ${{ github.workspace }}/eslint-report-formated.json
-          sed -e "s;/home/node/app;/github/workspace/;g" ./report/eslint-report.json > ./report/eslint-report.temp
-          mv ${{ github.workspace }}/eslint-report.temp ${{ github.workspace }}/eslint-report.json
+          sed -e "s;/home/node/app;/github/workspace/;g" ${{ github.workspace }}/report/eslint-report-formated.json > ${{ github.workspace }}/report/eslint-report-formated.temp
+          mv ${{ github.workspace }}/report/eslint-report-formated.temp ${{ github.workspace }}/report/eslint-report-formated.json
+          sed -e "s;/home/node/app;/github/workspace/;g" ${{ github.workspace }}/report/eslint-report.json > ./report/eslint-report.temp
+          mv ${{ github.workspace }}/report/eslint-report.temp ${{ github.workspace }}/report/eslint-report.json
 
         # workingDir: $(workspaces.source.path)
         # script: |
