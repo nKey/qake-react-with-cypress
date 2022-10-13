@@ -1,34 +1,42 @@
-module.exports = function (results) {
-  let summary = { issues: [] }
-  results.forEach(function (result) {
-    result.messages.forEach(function (msg) {
-      let logMessage = {
-        engineId: 'eslint',
-        ruleId: msg.ruleId || 'indent',
-        primaryLocation: {
-          message: msg.message,
-          filePath: result.filePath,
-          textRange: {
-            startLine: msg.line,
-            startColumn: msg.column,
-            endLine: msg.endLine,
-            endColumn: msg.endColumn,
-          },
-        },
-      }
+const { sum } = require('cypress/types/lodash')
 
-      // The log message type and severity is up to you but you need to take in consideration SonarQube properties
-      if (msg.severity === 1) {
-        logMessage.type = 'CODE_SMELL'
-        logMessage.severity = 'INFO'
-      }
-      if (msg.severity >= 2) {
-        logMessage.type = 'BUG'
-        logMessage.severity = 'MAJOR'
-      }
-      summary.issues.push(logMessage)
+module.exports = function (results) {
+  try {
+    let summary = { issues: [] }
+    results.forEach(function (result) {
+      result.messages.forEach(function (msg) {
+        let logMessage = {
+          engineId: 'eslint',
+          ruleId: msg.ruleId || 'indent',
+          primaryLocation: {
+            message: msg.message,
+            filePath: result.filePath,
+            textRange: {
+              startLine: msg.line,
+              startColumn: msg.column,
+              endLine: msg.endLine,
+              endColumn: msg.endColumn,
+            },
+          },
+        }
+
+        // The log message type and severity is up to you but you need to take in consideration SonarQube properties
+        if (msg.severity === 1) {
+          logMessage.type = 'CODE_SMELL'
+          logMessage.severity = 'INFO'
+        }
+        if (msg.severity >= 2) {
+          logMessage.type = 'BUG'
+          logMessage.severity = 'MAJOR'
+        }
+        summary.issues.push(logMessage)
+      })
     })
-  })
-  console.info(summary)
-  return JSON.stringify(summary)
+    console.info(summary)
+    console.info('summary issues', sumary.issues)
+    return JSON.stringify(summary.issues)
+  } catch (e) {
+    console.error(e.message)
+    throw e.message
+  }
 }
