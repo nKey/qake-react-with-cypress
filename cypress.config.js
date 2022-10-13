@@ -5,9 +5,9 @@ module.exports = defineConfig({
     // codeCoverage: {
     //   exclude: ['cypress/**/*.*'],
     // },
-    reporter: 'mochawesome',
+    reporter: 'node_modules/@bahmutov/cypress-code-coverage/plugin.js',
     reporterOptions: {
-      reportDir: 'node_modules/@bahmutov/cypress-code-coverage/plugin.js',
+      reportDir: 'report',
       overwrite: false,
       html: false,
       json: true,
