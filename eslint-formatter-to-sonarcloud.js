@@ -28,6 +28,6 @@ module.exports = function (results) {
       summary.issues.push(logMessage)
     })
   })
-  cosole.info(summary)
+  console.info(summary)
   return JSON.stringify(summary)
 }
