@@ -2,8 +2,15 @@ const { defineConfig } = require('cypress')
 
 module.exports = defineConfig({
   component: {
-    codeCoverage: {
-      exclude: ['cypress/**/*.*'],
+    // codeCoverage: {
+    //   exclude: ['cypress/**/*.*'],
+    // },
+    reporter: 'mochawesome',
+    reporterOptions: {
+      reportDir: 'report',
+      overwrite: false,
+      html: false,
+      json: true,
     },
     specPattern: 'src/*.cy.js',
     setupNodeEvents(on, config) {
