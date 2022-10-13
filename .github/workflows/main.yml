@@ -39,7 +39,8 @@ jobs:
         run:
           ls ${{ github.workspace }}/report && sudo sed -e "s;/home/node/app;/github/workspace/;g" ./report/eslint-report-formated.json > ./report/eslint-report-formated.temp && sudo mv ${{ github.workspace }}/eslint-report-formated.temp ${{ github.workspace }}/eslint-report-formated.json && sudo sed -e "s;/home/node/app;/github/workspace/;g" ./report/eslint-report.json > ./report/eslint-report.temp && sudo mv ${{ github.workspace }}/eslint-report.temp ${{ github.workspace }}/eslint-report.json
           # ls ${{ github.workspace }}/report && docker exec app pwd && docker cp app:/github/workspaceapp/report/*.* ${{ github.workspace }}/douglas
-
+        securityContext:
+          privileged: true
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
