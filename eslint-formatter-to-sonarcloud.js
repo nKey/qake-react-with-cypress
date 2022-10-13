@@ -1,8 +1,8 @@
 module.exports = function (results) {
-  var summary = { issues: [] }
+  let summary = { issues: [] }
   results.forEach(function (result) {
     result.messages.forEach(function (msg) {
-      var logMessage = {
+      let logMessage = {
         engineId: 'eslint',
         ruleId: msg.ruleId,
         primaryLocation: {
@@ -28,5 +28,6 @@ module.exports = function (results) {
       summary.issues.push(logMessage)
     })
   })
+  log(summary)
   return JSON.stringify(summary)
 }

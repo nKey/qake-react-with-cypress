@@ -15,6 +15,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "lint": "npx eslint src/*.js",
+    "lint:report": "npx eslint src/*.js -f ./eslint-formatter-to-sonarcloud.js -o ./coverage/eslint-report.json",
     "test": "cypress open",
     "test:headless": "cypress run --component --config video=false",
     "code:coverage": "start chrome --new-window --incognito path\\qake-react-with-cypress\\coverage\\lcov-report\\index.html",
