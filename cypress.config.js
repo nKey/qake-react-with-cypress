@@ -5,13 +5,13 @@ module.exports = defineConfig({
     // codeCoverage: {
     //   exclude: ['cypress/**/*.*'],
     // },
-    reporter: 'node_modules/@bahmutov/cypress-code-coverage/plugin.js',
-    reporterOptions: {
-      reportDir: 'report',
-      overwrite: false,
-      html: false,
-      json: true,
-    },
+    // reporter: 'node_modules/@bahmutov/cypress-code-coverage/plugin.js',
+    // reporterOptions: {
+    //   reportDir: 'report',
+    //   overwrite: false,
+    //   html: false,
+    //   json: true,
+    // },
     specPattern: 'src/*.cy.js',
     setupNodeEvents(on, config) {
       console.log('setupNodeEvents for components')
