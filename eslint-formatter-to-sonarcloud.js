@@ -1,7 +1,9 @@
 module.exports = function (results) {
   try {
     let summary = { issues: [] }
+    console.log({ results })
     results.forEach(function (result) {
+      console.log({ result })
       result.messages.forEach(function (msg) {
         let logMessage = {
           engineId: 'eslint',

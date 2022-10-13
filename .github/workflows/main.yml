@@ -32,7 +32,7 @@ jobs:
         run: echo 'Vai rodar o cypress!!' && docker ps && docker exec app ls && docker exec app npx clear-npx-cache && docker exec app npm run test:headless
 
       - name: Eslint run
-        run: echo 'Vai rodar o eslint!!' && docker exec app npx eslint src/*.js -f ./eslint-formatter-to-sonarcloud.js -o ./report/eslint-report-formated.json || true && docker exec app cat ./report/eslint-report-formated.json || true && docker exec app npx eslint src/*.js -f json -o ./report/eslint-report.json || true && docker exec app cat ./report/eslint-report.json || true
+        run: echo 'Vai rodar o eslint!!' && docker exec app npx eslint src/*.js -f ./eslint-formatter-to-sonarcloud.js -o ./report/eslint-report-formated.json || true && echo 'Vai rodar o CAT eslint-report-formated !!' && docker exec app cat ./report/eslint-report-formated.json || true && docker exec app npx eslint src/*.js -f json -o ./report/eslint-report.json || true && echo 'Vai rodar o CAT eslint-report!!' && docker exec app cat ./report/eslint-report.json || true
 
       - name: copy files to workspace
         # https://forums.docker.com/t/is-there-a-way-to-copy-a-file-from-an-image-to-the-local-filesystem-without-running-a-container/2841
