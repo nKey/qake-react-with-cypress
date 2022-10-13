@@ -48,7 +48,6 @@ module.exports = function (results) {
   console.info('summary.issues', summary.issues)
   console.info('summaryTeste before', summaryTeste)
   summaryTeste.messages = summary.issues
-  errorCount
   summaryTeste.errorCount = summary.issues.filter(
     (item) => item.type === 'BUG',
   ).length
