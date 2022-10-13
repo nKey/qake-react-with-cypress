@@ -7,7 +7,7 @@ module.exports = defineConfig({
     // },
     reporter: 'mochawesome',
     reporterOptions: {
-      reportDir: 'report',
+      reportDir: 'node_modules/@bahmutov/cypress-code-coverage/plugin.js',
       overwrite: false,
       html: false,
       json: true,
