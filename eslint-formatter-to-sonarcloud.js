@@ -1,5 +1,3 @@
-const { sum } = require('cypress/types/lodash')
-
 module.exports = function (results) {
   try {
     let summary = { issues: [] }
