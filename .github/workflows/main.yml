@@ -40,7 +40,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-      - name: copy files to workspace
-        # https://forums.docker.com/t/is-there-a-way-to-copy-a-file-from-an-image-to-the-local-filesystem-without-running-a-container/2841
-        run: |
-          ls ${{ github.workspace }}/report && docker exec app pwd && docker cp app:/github/workspaceapp/report/*.* ./github/workspace/douglas
+      # - name: copy files to workspace
+      #   # https://forums.docker.com/t/is-there-a-way-to-copy-a-file-from-an-image-to-the-local-filesystem-without-running-a-container/2841
+      #   run: |
+      #     ls ${{ github.workspace }}/report && docker exec app pwd && docker cp app:/github/workspaceapp/report/*.* ./github/workspace/douglas
