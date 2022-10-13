@@ -1,9 +1,11 @@
 module.exports = {
+  root: true,
   env: {
     browser: true,
     es2021: true,
   },
   extends: [
+    // 'plugin:react/recommended',
     'eslint:recommended',
     'plugin:cypress/recommended',
     'plugin:chai-friendly/recommended',
@@ -15,4 +17,9 @@ module.exports = {
   },
   plugins: ['react'],
   rules: {},
+  // settings: {
+  //   react: {
+  //     version: 'detect',
+  //   },
+  // },
 }
