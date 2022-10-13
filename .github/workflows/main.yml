@@ -37,10 +37,25 @@ jobs:
       - name: copy files to workspace
         # https://forums.docker.com/t/is-there-a-way-to-copy-a-file-from-an-image-to-the-local-filesystem-without-running-a-container/2841
         run:
-          ls ${{ github.workspace }}/report && sudo sed -e "s;/home/node/app;/github/workspace/;g" ./report/eslint-report-formated.json > ./report/eslint-report-formated.temp && sudo mv ${{ github.workspace }}/eslint-report-formated.temp ${{ github.workspace }}/eslint-report-formated.json && sudo sed -e "s;/home/node/app;/github/workspace/;g" ./report/eslint-report.json > ./report/eslint-report.temp && sudo mv ${{ github.workspace }}/eslint-report.temp ${{ github.workspace }}/eslint-report.json
+          ls ${{ github.workspace }}/report 
+          sed -e "s;/home/node/app;/github/workspace/;g" ./report/eslint-report-formated.json > ./report/eslint-report-formated.temp 
+          mv ${{ github.workspace }}/eslint-report-formated.temp ${{ github.workspace }}/eslint-report-formated.json 
+          sed -e "s;/home/node/app;/github/workspace/;g" ./report/eslint-report.json > ./report/eslint-report.temp 
+          mv ${{ github.workspace }}/eslint-report.temp ${{ github.workspace }}/eslint-report.json
           # ls ${{ github.workspace }}/report && docker exec app pwd && docker cp app:/github/workspaceapp/report/*.* ${{ github.workspace }}/douglas
         securityContext:
           privileged: true
+
+        workingDir: $(workspaces.source.path)
+        script: |
+          ls ${{ github.workspace }}/report 
+          sed -e "s;/home/node/app;/github/workspace/;g" ./report/eslint-report-formated.json > ./report/eslint-report-formated.temp 
+          mv ${{ github.workspace }}/eslint-report-formated.temp ${{ github.workspace }}/eslint-report-formated.json 
+          sed -e "s;/home/node/app;/github/workspace/;g" ./report/eslint-report.json > ./report/eslint-report.temp 
+          mv ${{ github.workspace }}/eslint-report.temp ${{ github.workspace }}/eslint-report.json
+        securityContext:
+          privileged: true
+          
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
