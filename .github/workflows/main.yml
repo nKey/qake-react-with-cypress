@@ -37,7 +37,7 @@ jobs:
       - name: copy files to workspace
         # https://forums.docker.com/t/is-there-a-way-to-copy-a-file-from-an-image-to-the-local-filesystem-without-running-a-container/2841
         run: |
-          docker cp app:/report/*.* ${{ github.workspace }}/douglas && ls ${{ github.workspace }}
+          docker cp app:./report/*.* ${{ github.workspace }}/douglas && ls ${{ github.workspace }}
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
