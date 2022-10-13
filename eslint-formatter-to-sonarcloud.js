@@ -2,6 +2,7 @@ module.exports = function (results) {
   try {
     let summary = { issues: [] }
     results.forEach(function (result) {
+      console.log({ results })
       result.messages.forEach(function (msg) {
         let logMessage = {
           engineId: 'eslint',
@@ -32,7 +33,7 @@ module.exports = function (results) {
     })
     console.info(summary)
     console.info('summary issues', summary.issues)
-    return JSON.stringify(summary.issues)
+    return JSON.stringify(summary)
   } catch (e) {
     console.error(e.message)
     throw e.message
