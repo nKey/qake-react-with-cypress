@@ -32,7 +32,8 @@ jobs:
         run: echo 'Vai rodar o cypress!!' && docker ps && docker exec app ls && docker exec app npm run test:headless
 
       - name: Eslint run
-        run: echo 'Vai rodar o eslint!!\n' && docker exec app npx eslint src/*.js -f ./eslint-formatter-to-sonarcloud.js -o ./report/eslint-report.json || true
+        run: echo 'Vai rodar o eslint!!\n' && docker exec app npx eslint src/*.js -f json -o ./report/eslint-report.json || true
+        #run: echo 'Vai rodar o eslint!!\n' && docker exec app npx eslint src/*.js -f ./eslint-formatter-to-sonarcloud.js -o ./report/eslint-report.json || true
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
