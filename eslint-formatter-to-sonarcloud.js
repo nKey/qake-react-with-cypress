@@ -31,7 +31,7 @@ module.exports = function (results) {
       })
     })
     console.info(summary)
-    console.info('summary issues', sumary.issues)
+    console.info('summary issues', summary.issues)
     return JSON.stringify(summary.issues)
   } catch (e) {
     console.error(e.message)
