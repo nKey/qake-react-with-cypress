@@ -8,6 +8,17 @@ export const getLocation = () => {
   return { hostname, pathname }
 }
 
+export const getLocation5 = () => {
+  const { hostname, pathname } = window.location
+  console.log({ teste })
+  return { hostname, pathname }
+}
+export const getLocation6 = () => {
+  const { hostname, pathname } = window.location
+  console.log({ teste })
+  return { hostname, pathname }
+}
+
 export const teste = async (req, res) => {
   const value = req?.query?.value
   res.setHeader('Set-Cookie', value) // Noncompliant
