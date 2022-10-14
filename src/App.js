@@ -27,7 +27,6 @@ function App() {
       console.log({ localStorage })
     })
   }
-  const cp = require('child_process')
 
   function teste555(req, res) {
     const cmd = 'ls ' + req.query.arg
