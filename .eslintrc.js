@@ -5,7 +5,7 @@ module.exports = {
     es2021: true,
   },
   extends: [
-    'plugin:react/recommended',
+    // 'plugin:react/recommended',
     'eslint:recommended',
     'plugin:cypress/recommended',
     'plugin:chai-friendly/recommended',
@@ -17,9 +17,9 @@ module.exports = {
   },
   plugins: ['react'],
   rules: {},
-  settings: {
-    react: {
-      version: 'detect',
-    },
-  },
+  // settings: {
+  //   react: {
+  //     version: 'detect',
+  //   },
+  // },
 }

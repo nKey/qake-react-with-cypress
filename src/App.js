@@ -11,6 +11,15 @@ function App() {
     login: 'douglas',
     password: 'teste.js',
   }
+  var db = window.openDatabase(
+    'myDb',
+    '1.0',
+    'Personal secrets stored here',
+    2 * 1024 * 1024,
+  ) // Noncompliant
+  if (db === false) {
+    alert('Unexpected Condition')
+  }
   return (
     <div className="App">
       <header className="App-header">

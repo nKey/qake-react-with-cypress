@@ -8,6 +8,9 @@ export const teste = async (req, res) => {
   const value = req.query.value
   res.setHeader('Set-Cookie', value) // Noncompliant
   res.cookie('connect.sid', value) // Noncompliant
+  if (res === false) {
+    alert('Unexpected Condition')
+  }
 }
 
 export const getLocation2 = () => {
