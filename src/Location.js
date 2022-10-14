@@ -28,7 +28,7 @@ export const getLocation2 = () => {
   return { hostname, pathname }
 }
 
-module.exports.index = async function (req, res) {
+async function testeX(req, res) {
   const value = req.query.value
 
   res.setHeader('Set-Cookie', value) // Noncompliant
