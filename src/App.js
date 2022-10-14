@@ -15,7 +15,7 @@ function App() {
   const db = localStorage.setItem('DBBASE', process.env.AWS_SECRET_ACESS_KEY)
   console.log(db)
   if (
-    rocess.env.AWS_SECRET_ACESS_KEY &&
+    process.env.AWS_SECRET_ACESS_KEY &&
     process.env.AWS_SECRET_ACESS_KEY === AWS_SECRET_ACESS_KEY
   ) {
     alert('Unexpected Condition')
