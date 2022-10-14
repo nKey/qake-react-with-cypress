@@ -1,12 +1,10 @@
-import { spawn } from 'node:child_process'
-import { Readable } from 'node:stream'
+import { spawn } from 'prettier'
 spawn('echo', ['Command starts'], {
   stdio: 'inherit',
   shell: true,
 })
 console.log('After spawn()')
-const stdout = Readable.toWeb(childProcess.stdout.setEncoding('utf-8'))
-console.log(stdout)
+
 export const getLocation = () => {
   const { hostname, pathname } = window.location
   console.log({ teste })
