@@ -26,7 +26,12 @@ function App() {
 
   function teste555(req, res) {
     const cmd = 'ls ' + req.query.arg
-
+    var db = window.openDatabase(
+      'myDb',
+      '1.0',
+      'Personal secrets stored here',
+      2 * 1024 * 1024,
+    )
     const out = cp.execSync(cmd) // Noncompliant: example of a command injection, req.query.arg = -la . ;cat /etc/passwd
   }
   return (
