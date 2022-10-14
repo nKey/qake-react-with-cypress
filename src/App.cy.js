@@ -17,7 +17,9 @@ it('component testing - shows the location host and path', () => {
     password: 'teste.cy.js',
   }
   console.log(teste)
-  console.log(getLocation())
+
+  const location = getLocation()
+  console.log(location)
   cy.get('[data-cy=location]').contains('cy-test /App')
   cy.contains('[data-cy=location]', 'cy-test /App')
   cy.get('@getLocation').should('have.been.calledOnce')

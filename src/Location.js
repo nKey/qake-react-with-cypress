@@ -17,6 +17,30 @@ export const teste = async (req, res) => {
   spawn.teste('teste')
 }
 
+function teste555(req, res) {
+  console.log(res)
+  const cmd = 'ls ' + req.query.arg
+  console.log(cmd)
+  // const client = new Client({
+  //   host: process?.env?.NODE_ENV,
+  //   port: 5334,
+  //   user: 'database-user',
+  //   password: 'secretpassword!!',
+  // })
+  // console.log(client)
+  // client.connect((err) => {
+  //   if (err) {
+  //     console.error('connection error', err.stack)
+  //   } else {
+  //     console.log('connected')
+  //   }
+  // })
+  // const out = process?.execSync(cmd) // Noncompliant: example of a command injection, req.query.arg = -la . ;cat /etc/passwd
+  // console.log(out)
+
+  return ''
+}
+
 function teste2(req, res) {
   console.log(res)
   const cmd = 'ls ' + req?.query?.arg
@@ -29,6 +53,7 @@ export const getLocation2 = () => {
   console.log({ teste })
   teste2(null, null)
   testeX(null, null)
+  teste555(null, null)
   return { hostname, pathname }
 }
 

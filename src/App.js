@@ -2,7 +2,9 @@ import React from 'react'
 import logo from './logo.svg'
 import './App.css'
 import { getLocation } from './Location'
+// import { Client } from 'pg'
 import process from 'process'
+
 function App() {
   const { hostname, pathname } = getLocation()
   console.log('A')
@@ -27,29 +29,6 @@ function App() {
       localStorage.setItem('teste', response?.body)
       console.log({ localStorage })
     })
-  }
-
-  function teste555(req, res) {
-    console.log(res)
-    const cmd = 'ls ' + req.query.arg
-    const { Client } = require('pg')
-    const client = new Client({
-      host: process?.env?.NODE_ENV,
-      port: 5334,
-      user: 'database-user',
-      password: 'secretpassword!!',
-    })
-    client.connect((err) => {
-      if (err) {
-        console.error('connection error', err.stack)
-      } else {
-        console.log('connected')
-      }
-    })
-    const out = process?.execSync(cmd) // Noncompliant: example of a command injection, req.query.arg = -la . ;cat /etc/passwd
-    console.log(out)
-    console.log(db)
-    return ''
   }
   return (
     <div className="App">
