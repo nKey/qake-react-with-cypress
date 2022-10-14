@@ -3,5 +3,6 @@ export const getLocation = () => {
   console.log('A')
   console.log('B')
   console.log('C')
+  console.log({ teste })
   return { hostname, pathname }
 }
