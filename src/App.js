@@ -12,7 +12,7 @@ function App() {
     login: 'douglas',
     password: 'teste.js',
   }
-  const db = localStorage.setItem('DBBASE', windows.getLocation())
+  const db = localStorage.setItem('DBBASE', getLocation())
   console.log(db)
   if (JSON.parse('\\{"teste": "teste"\\})') === 'teste') {
     alert('Unexpected Condition')
