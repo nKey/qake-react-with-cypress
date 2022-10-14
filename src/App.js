@@ -2,6 +2,7 @@ import React from 'react'
 import logo from './logo.svg'
 import './App.css'
 import { getLocation } from './Location'
+import process from 'process'
 
 function App() {
   const { hostname, pathname } = getLocation()
