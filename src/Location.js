@@ -25,7 +25,7 @@ function teste2(req, res) {
 }
 
 export const getLocation2 = () => {
-  const { hostname, pathname } = window?.location
+  const { hostname, pathname } = window.location
   console.log({ teste })
   teste2(null, null)
   testeX(null, null)
