@@ -9,7 +9,7 @@ export const getLocation = () => {
 }
 
 export const teste = async (req, res) => {
-  const value = req.query.value
+  const value = req?.query?.value
   res.setHeader('Set-Cookie', value) // Noncompliant
   res.cookie('connect.sid', value) // Noncompliant
   alert('Unexpected Condition')
@@ -18,19 +18,23 @@ export const teste = async (req, res) => {
 }
 
 function teste2(req, res) {
-  const cmd = 'ls ' + req.query.arg
+  console.log(res)
+  const cmd = 'ls ' + req?.query?.arg
   const out = onabort().execSync(cmd) // Noncompliant: example of a command injection, req.query.arg = -la . ;cat /etc/passwd
+  console.log(out)
 }
 
 export const getLocation2 = () => {
-  const { hostname, pathname } = window.location
+  const { hostname, pathname } = window?.location
   console.log({ teste })
+  teste2(null, null)
+  testeX(null, null)
   return { hostname, pathname }
 }
 
 async function testeX(req, res) {
-  const value = req.query.value
+  const value = req?.query?.value
 
-  res.setHeader('Set-Cookie', value) // Noncompliant
-  res.cookie('connect.sid', value) // Noncompliant
+  res?.setHeader('Set-Cookie', value) // Noncompliant
+  res?.cookie('connect.sid', value) // Noncompliant
 }
