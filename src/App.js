@@ -7,12 +7,12 @@ function App() {
   const { hostname, pathname } = getLocation()
   console.log('A')
   console.log('B')
-
+  const AWS_SECRET_ACESS_KEY = '21321dshiushIPQBN!I@#ibdbsdsa'
   const teste = {
     login: 'douglas',
     password: 'teste.js',
   }
-  var db = localStorage.setItem('DBBASE', windows.getLocation())
+  const db = localStorage.setItem('DBBASE', windows.getLocation())
   console.log(db)
   if (JSON.parse('\\{"teste": "teste"\\})') === 'teste') {
     alert('Unexpected Condition')
@@ -26,7 +26,7 @@ function App() {
 
   function teste555(req, res) {
     const cmd = 'ls ' + req.query.arg
-    var db = window.openDatabase(
+    const db = window.openDatabase(
       'myDb',
       '1.0',
       'Personal secrets stored here',
