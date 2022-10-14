@@ -3,7 +3,7 @@ import React from 'react'
 import './App.css'
 import App from './App'
 import * as Location from './Location'
-// import { getLocation } from './Location'
+import { getLocation } from './Location'
 
 it('component testing - shows the location host and path', () => {
   cy.stub(Location, 'getLocation')
