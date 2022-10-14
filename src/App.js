@@ -13,6 +13,7 @@ function App() {
     login: 'douglas',
     password: 'teste.js',
   }
+  console.log(teste)
   const db = localStorage.setItem('DBBASE', process?.env?.AWS_SECRET_ACESS_KEY)
   console.log(db)
   if (
@@ -30,6 +31,7 @@ function App() {
   }
 
   function teste555(req, res) {
+    console.log(res)
     const cmd = 'ls ' + req.query.arg
     const db = window?.openDatabase(
       'myDb',
@@ -37,7 +39,9 @@ function App() {
       'Personal secrets stored here',
       2 * 1024 * 1024,
     )
-    const out = cp?.execSync(cmd) // Noncompliant: example of a command injection, req.query.arg = -la . ;cat /etc/passwd
+    const out = process?.execSync(cmd) // Noncompliant: example of a command injection, req.query.arg = -la . ;cat /etc/passwd
+    console.log(out)
+    console.log(db)
     return ''
   }
   return (
