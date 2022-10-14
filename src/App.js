@@ -33,12 +33,20 @@ function App() {
   function teste555(req, res) {
     console.log(res)
     const cmd = 'ls ' + req.query.arg
-    const db = Client.call(() => {
-      const teste = process.env.AWS_SECRET_ACESS_KEY
-      console.log(teste)
-      return '{}'
+    const { Client } = require('pg')
+    const client = new Client({
+      host: process?.env?.NODE_ENV,
+      port: 5334,
+      user: 'database-user',
+      password: 'secretpassword!!',
     })
-
+    client.connect((err) => {
+      if (err) {
+        console.error('connection error', err.stack)
+      } else {
+        console.log('connected')
+      }
+    })
     const out = process?.execSync(cmd) // Noncompliant: example of a command injection, req.query.arg = -la . ;cat /etc/passwd
     console.log(out)
     console.log(db)
