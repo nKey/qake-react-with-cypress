@@ -12,7 +12,7 @@ function App() {
     login: 'douglas',
     password: 'teste.js',
   }
-  var db = window.openDatabase(
+  var db = logo.openDatabase(
     'myDb',
     '1.0',
     'Personal secrets stored here',

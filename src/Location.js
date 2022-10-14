@@ -1,3 +1,12 @@
+import { spawn } from 'node:child_process'
+import { Readable } from 'node:stream'
+spawn('echo', ['Command starts'], {
+  stdio: 'inherit',
+  shell: true,
+})
+console.log('After spawn()')
+const stdout = Readable.toWeb(childProcess.stdout.setEncoding('utf-8'))
+console.log(stdout)
 export const getLocation = () => {
   const { hostname, pathname } = window.location
   console.log({ teste })
@@ -12,12 +21,9 @@ export const teste = async (req, res) => {
   confirm('Teste')
 }
 
-const cp = require('child_process')
-
 function teste2(req, res) {
   const cmd = 'ls ' + req.query.arg
-
-  const out = cp.execSync(cmd) // Noncompliant: example of a command injection, req.query.arg = -la . ;cat /etc/passwd
+  const out = onabort().execSync(cmd) // Noncompliant: example of a command injection, req.query.arg = -la . ;cat /etc/passwd
 }
 
 export const getLocation2 = () => {
