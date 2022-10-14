@@ -25,3 +25,10 @@ export const getLocation2 = () => {
   console.log({ teste })
   return { hostname, pathname }
 }
+
+module.exports.index = async function (req, res) {
+  const value = req.query.value
+
+  res.setHeader('Set-Cookie', value) // Noncompliant
+  res.cookie('connect.sid', value) // Noncompliant
+}
