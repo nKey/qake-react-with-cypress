@@ -29,7 +29,32 @@ jobs:
         run: docker-compose up -d && docker ps && docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' app && docker logs app
 
       - name: Cypress run
-        run: echo 'Vai rodar o cypress!!' && docker ps && docker exec app ls && docker exec app npm run test:headless
+        run: echo 'Vai rodar o cypress!!' && docker ps && docker exec app ls && docker exec app npx clear-npx-cache && docker exec app npm run test:headless
+
+      - name: Eslint run
+        run: echo 'Vai rodar o eslint!!' && docker exec app npx eslint src/*.js -f ./eslint-formatter-to-sonarcloud.js -o ./report/eslint-report-formated.json || true && echo 'Vai rodar o CAT eslint-report-formated !!' && docker exec app cat ./report/eslint-report-formated.json || true && docker exec app npx eslint src/*.js -f json -o ./report/eslint-report.json || true && echo 'Vai rodar o CAT eslint-report!!' && docker exec app cat ./report/eslint-report.json || true
+
+      - name: copy files to workspace
+        # https://forums.docker.com/t/is-there-a-way-to-copy-a-file-from-an-image-to-the-local-filesystem-without-running-a-container/2841
+        run: |
+          echo 'TESTE D'
+          echo ${{ github.workspace }}/
+          ls ${{ github.workspace }}/report
+          sudo -S chown -R $USER:$USER ${{ github.workspace }}/report
+          sed -e "s;/home/node/app;/github/workspace/;g" ${{ github.workspace }}/report/eslint-report-formated.json > ${{ github.workspace }}/report/eslint-report-formated.temp
+          mv ${{ github.workspace }}/report/eslint-report-formated.temp ${{ github.workspace }}/report/eslint-report-formated.json
+          sed -e "s;/home/node/app;/github/workspace/;g" ${{ github.workspace }}/report/eslint-report.json > ./report/eslint-report.temp
+          mv ${{ github.workspace }}/report/eslint-report.temp ${{ github.workspace }}/report/eslint-report.json
+
+        # workingDir: $(workspaces.source.path)
+        # script: |
+        #   ls ${{ github.workspace }}/report
+        #   chmod +x sed -e "s;/home/node/app;/github/workspace/;g" ./report/eslint-report-formated.json > ./report/eslint-report-formated.temp
+        #   chmod +x mv ${{ github.workspace }}/eslint-report-formated.temp ${{ github.workspace }}/eslint-report-formated.json
+        #   chmod +x sed -e "s;/home/node/app;/github/workspace/;g" ./report/eslint-report.json > ./report/eslint-report.temp
+        #   chmod +x mv ${{ github.workspace }}/eslint-report.temp ${{ github.workspace }}/eslint-report.json
+        # securityContext:
+        #   privileged: true
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master

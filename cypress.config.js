@@ -2,16 +2,22 @@ const { defineConfig } = require('cypress')
 
 module.exports = defineConfig({
   component: {
-    codeCoverage: {
-      exclude: ['cypress/**/*.*'],
-    },
+    // codeCoverage: {
+    //   exclude: ['cypress/**/*.*'],
+    // },
+    // reporter: 'node_modules/@bahmutov/cypress-code-coverage/plugin.js',
+    // reporterOptions: {
+    //   reportDir: 'report',
+    //   overwrite: false,
+    //   html: false,
+    //   json: true,
+    // },
     specPattern: 'src/*.cy.js',
     setupNodeEvents(on, config) {
       console.log('setupNodeEvents for components')
 
       // https://github.com/bahmutov/cypress-code-coverage
       require('@bahmutov/cypress-code-coverage/plugin')(on, config)
-
       return config
     },
     devServer: {
