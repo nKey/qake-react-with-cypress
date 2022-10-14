@@ -3,7 +3,7 @@ import React from 'react'
 import './App.css'
 import App from './App'
 import * as Location from './Location'
-import { getLocation } from './Location'
+// import { getLocation } from './Location'
 it('component testing - shows the location host and path', () => {
   cy.stub(Location, 'getLocation')
     .returns({
@@ -18,7 +18,7 @@ it('component testing - shows the location host and path', () => {
   }
   console.log(teste)
 
-  const location = getLocation()
+  // const location = getLocation()
   console.log(location)
   cy.get('[data-cy=location]').contains('cy-test /App')
   cy.contains('[data-cy=location]', 'cy-test /App')
