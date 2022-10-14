@@ -55,7 +55,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} href={teste555()} className="App-logo" alt="logo" />
+        <img src={logo} className="App-logo" alt="logo" />
         <p data-cy="location">
           {hostname} {pathname}{' '}
         </p>
