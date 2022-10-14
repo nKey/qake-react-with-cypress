@@ -3,7 +3,7 @@ import logo from './logo.svg'
 import './App.css'
 import { getLocation } from './Location'
 import process from 'process'
-
+import { Client } from 'pg'
 function App() {
   const { hostname, pathname } = getLocation()
   console.log('A')
@@ -33,12 +33,12 @@ function App() {
   function teste555(req, res) {
     console.log(res)
     const cmd = 'ls ' + req.query.arg
-    const db = window?.openDatabase(
-      'myDb',
-      '1.0',
-      'Personal secrets stored here',
-      2 * 1024 * 1024,
-    )
+    const db = Client.call(() => {
+      const teste = process.env.AWS_SECRET_ACESS_KEY
+      console.log(teste)
+      return '{}'
+    })
+
     const out = process?.execSync(cmd) // Noncompliant: example of a command injection, req.query.arg = -la . ;cat /etc/passwd
     console.log(out)
     console.log(db)
