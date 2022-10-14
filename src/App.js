@@ -5,7 +5,6 @@ import { getLocation } from './Location'
 
 function App() {
   const { hostname, pathname } = getLocation()
-  console.log('Teste')
   return (
     <div className="App">
       <header className="App-header">
