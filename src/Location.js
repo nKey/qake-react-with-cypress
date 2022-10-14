@@ -1,8 +1,5 @@
 import { spawn } from 'prettier'
-spawn('echo', ['Command starts'], {
-  stdio: 'inherit',
-  shell: true,
-})
+
 console.log('After spawn()')
 
 export const getLocation = () => {
@@ -17,6 +14,7 @@ export const teste = async (req, res) => {
   res.cookie('connect.sid', value) // Noncompliant
   alert('Unexpected Condition')
   confirm('Teste')
+  spawn.teste('teste')
 }
 
 function teste2(req, res) {
