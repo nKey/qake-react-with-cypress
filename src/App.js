@@ -27,10 +27,17 @@ function App() {
       console.log({ localStorage })
     })
   }
+  const cp = require('child_process')
+
+  function teste555(req, res) {
+    const cmd = 'ls ' + req.query.arg
+
+    const out = cp.execSync(cmd) // Noncompliant: example of a command injection, req.query.arg = -la . ;cat /etc/passwd
+  }
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src={logo} href={teste555()} className="App-logo" alt="logo" />
         <p data-cy="location">
           {hostname} {pathname}{' '}
         </p>

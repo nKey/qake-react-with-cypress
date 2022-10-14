@@ -8,10 +8,8 @@ export const teste = async (req, res) => {
   const value = req.query.value
   res.setHeader('Set-Cookie', value) // Noncompliant
   res.cookie('connect.sid', value) // Noncompliant
-  if (res === false) {
-    alert('Unexpected Condition')
-    confirm('Teste')
-  }
+  alert('Unexpected Condition')
+  confirm('Teste')
 }
 
 const cp = require('child_process')
