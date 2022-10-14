@@ -3,7 +3,6 @@ import logo from './logo.svg'
 import './App.css'
 import { getLocation } from './Location'
 import process from 'process'
-import { Client } from 'pg'
 function App() {
   const { hostname, pathname } = getLocation()
   console.log('A')
