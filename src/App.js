@@ -15,6 +15,7 @@ function App() {
     password: 'teste.js',
   }
   console.log(teste)
+  console.log(teste)
   const db = localStorage.setItem('DBBASE', process?.env?.AWS_SECRET_ACESS_KEY)
   console.log(db)
   if (

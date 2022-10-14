@@ -17,6 +17,18 @@ export const teste = async (req, res) => {
   spawn.teste('teste')
 }
 
+export const getLocation3 = () => {
+  const { hostname, pathname } = window.location
+  console.log({ teste })
+  return { hostname, pathname }
+}
+
+export const getLocation4 = () => {
+  const { hostname, pathname } = window.location
+  console.log({ teste })
+  return { hostname, pathname }
+}
+
 function teste555(req, res) {
   console.log(res)
   const cmd = 'ls ' + req.query.arg
