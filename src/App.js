@@ -2,11 +2,13 @@ import React from 'react'
 import logo from './logo.svg'
 import './App.css'
 import { getLocation } from './Location'
+import { throws } from 'blabla'
 
 function App() {
   const { hostname, pathname } = getLocation()
-  console.log('TESTE')
-  console.log('TESTE')
+  console.log('A')
+  console.log('B')
+  console.log('C')
   return (
     <div className="App">
       <header className="App-header">
