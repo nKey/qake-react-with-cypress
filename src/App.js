@@ -12,12 +12,8 @@ function App() {
     login: 'douglas',
     password: 'teste.js',
   }
-  var db = logo.openDatabase(
-    'myDb',
-    '1.0',
-    'Personal secrets stored here',
-    2 * 1024 * 1024,
-  ) // Noncompliant
+  var db = localStorage.setItem('DBBASE', windows.getLocation())
+  console.log(db)
   if (JSON.parse('\\{"teste": "teste"\\})') === 'teste') {
     alert('Unexpected Condition')
     fetch(
