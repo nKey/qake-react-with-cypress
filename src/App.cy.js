@@ -14,6 +14,7 @@ it('component testing - shows the location host and path', () => {
     .as('getLocation')
   cy.mount(<App />)
   console.log('A')
+  console.log('A')
   cy.get('[data-cy=location]').contains('cy-test /App')
   cy.contains('[data-cy=location]', 'cy-test /App')
   cy.get('@getLocation').should('have.been.calledOnce')
@@ -22,6 +23,7 @@ it('component testing - shows the location host and path', () => {
 it('unit testing - shows the location host and path', () => {
   const location = getLocation()
   console.log('B')
+  console.log('A')
   expect(location.hostname).to.be.equals('localhost')
   expect(location.pathname).to.contains('src/App.cy.js')
 })
