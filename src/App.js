@@ -2,10 +2,16 @@ import React from 'react'
 import logo from './logo.svg'
 import './App.css'
 import { getLocation } from './Location'
+import process from 'process'
 
 function App() {
   const { hostname, pathname } = getLocation()
-  console.log('TESTE')
+  const teste = {
+    login: 'douglas',
+    password: process.env.AWS_SECRET,
+  }
+  console.log(teste)
+
   return (
     <div className="App">
       <header className="App-header">
