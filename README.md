@@ -1,40 +1,82 @@
-### TO RUN APP ![cypress version](https://img.shields.io/badge/cypress-10.3.0-brightgreen)
+<h1><p align="center">React with Cypress 🌲</p></h1>
 
-npm install && npm run start
+This project is a Component Testing example using JavaScript, React and [Cypress](https://www.cypress.io/).
 
-### TO RUN TESTS YOU NEED RUN APP IT FIRST
+## Features 🧪
 
-(Run the tests with Cypress GUI)
-npm run test
+-   NodeJS
+-   Cypress
+-   ReactJs
 
-(Run the cypress tests in headless mode)
+## Requirements 📚
+
+-   node >= ^16.x - [Node installation](https://nodejs.org/en/download/)
+-   npm >= ^8.x - [NPM installation](https://www.npmjs.com/get-npm) (or yarn)
+
+## Getting Started
+
+Install the dependencies:
+
+```bash
+npm install
+```
+
+Run application:
+
+```bash
+npm run start
+```
+
+Run tests in headless mode:
+
+```bash
 npm run test:headless
+```
 
-### WINDOWS: AFTER RUN COMPONENT TESTS, YOU CAN SEE COVERAGE:
+Run tests with Cypress GUI:
 
+```bash
+npm run test
+```
+
+## Coverage Tests 📈
+After running the component tests using cypress, you are able to run the tests coverage:
 (you need to configure the index.html path in your package.json file)
+
+For Windows:
+```bash
 npm run code:coverage
+```
 
-### MAC OS: AFTER RUN COMPONENT TESTS, YOU CAN SEE COVERAGE:
-
+For MacOS
+```bash
 npm run code:coverage:mac
+```
 
-### Build container
-
+## Build a container 🐳
+```bash
 docker-compose build
-
-### RUN container
-
+```
+### Run this container 🐋
+```bash
 docker-compose up -d && docker ps && docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' app && docker logs app
+```
 
-### RUN Cypress run in container
+## Run "Cypress Run" in container 🌲
+```bash
+echo 'Cypress gonna run!!' && docker ps && docker exec app ls && docker exec app npm run test:headless
+```
 
-echo 'Vai rodar o cypress!!' && docker ps && docker exec app ls && docker exec app npm run test:headless
+## Run Eslint in container
+```bash
+echo 'Eslint gonna run!!' && docker exec app npx eslint src/*.js -f json -o ./report/eslint-report.json
+```
 
-### Run Eslint run in container
-
-echo 'Vai rodar o eslint!!' && docker exec app npx eslint src/\*.js -f json -o ./report/eslint-report.json
-
-### STOP DOCKER
-
+## Stop docker! 🚫🐳
+```bash
 docker-compose stop
+```
+
+## Contributing 👨‍💻🤝
+
+Feel free to complement/report something in pull requests. The project is ours! 🤝
